@@ -32,7 +32,7 @@ public class ServerClientTest {
 		inputs.put("file_name","file");
 		outputs.put("file_provider_file",null);
 
-		WtsClient c = new WtsClient("http://localhost:8080/wts/services/");
+		WtsClient c = new WtsClient("http://regadb.med.kuleuven.be/wts/services/");
 
 		String challenge;
 		String ticket;

@@ -30,13 +30,8 @@
 	</target>
 	
 	<target name="dist" depends="compile">
-		<jar jarfile="${dist}/${proj.name}-${proj.version}.jar" basedir="${build}" />
-		<jar jarfile="${dist}/wts-cli-${proj.version}.jar" basedir="${build}">
-			<manifest>
-				<attribute name="Main-Class" value="net.sf.wts.client.cli.WtsClientCli" />
-				<attribute name="Class-Path" value="${jar-dependencies}" />
-			</manifest>
-		</jar>
+		<jar jarfile="${dist}/${proj.name}-${proj.version}.jar" 
+		     basedir="${build}" />
 	</target>
 	
 	<target name="all" depends="dist" />

@@ -3,6 +3,7 @@ package net.sf.wts.client.util;
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import javax.xml.rpc.ParameterMode;
 import javax.xml.rpc.ServiceException;
@@ -10,18 +11,30 @@ import javax.xml.rpc.ServiceException;
 import org.apache.axis.client.Call;
 import org.apache.axis.client.Service;
 import org.apache.axis.encoding.XMLType;
+import org.apache.axis.transport.http.HTTPConstants;
 
 public class AxisClient 
 {
     private Call call;
     private ArrayList<Object> parameters_ = new ArrayList<Object>();
     
-    public AxisClient()
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public AxisClient()
     {
         Service service = new Service();
         try 
         {            
             call = (Call) service.createCall();
+
+            //enable gzip compression
+//            call.setProperty(HTTPConstants.MC_ACCEPT_GZIP, Boolean.TRUE);
+//            call.setProperty(HTTPConstants.MC_GZIP_REQUEST, Boolean.TRUE);
+            
+            Hashtable headers = (Hashtable)call.getProperty(HTTPConstants.REQUEST_HEADERS);
+            if(headers == null)
+            	headers = new Hashtable();
+            headers.put(HTTPConstants.HEADER_TRANSFER_ENCODING_CHUNKED, false);
+            call.setProperty(HTTPConstants.REQUEST_HEADERS, headers);
         } 
         catch (ServiceException e) 
         {

@@ -181,6 +181,7 @@ public class WtsClient implements IWtsClient
             catch (IOException e) 
             {
                 e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
     }
@@ -208,6 +209,7 @@ public class WtsClient implements IWtsClient
         catch (IOException e) 
         {
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
         
         upload(sessionTicket, serviceName, fileName, array);
@@ -243,6 +245,7 @@ public class WtsClient implements IWtsClient
         catch (RemoteException e) 
         {
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
         
         return array;
@@ -279,6 +282,7 @@ public class WtsClient implements IWtsClient
         catch (RemoteException e) 
         {
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
         
         return array;
@@ -315,6 +319,7 @@ public class WtsClient implements IWtsClient
         catch (RemoteException e) 
         {
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
         return status;
@@ -348,6 +353,7 @@ public class WtsClient implements IWtsClient
         catch (RemoteException e)
         {
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
     
@@ -379,6 +385,7 @@ public class WtsClient implements IWtsClient
         catch (RemoteException e)
         {
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
     
@@ -410,6 +417,7 @@ public class WtsClient implements IWtsClient
         catch (RemoteException e)
         {
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 

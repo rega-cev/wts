@@ -39,6 +39,7 @@ public class AxisClient
         catch (ServiceException e) 
         {
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
     
